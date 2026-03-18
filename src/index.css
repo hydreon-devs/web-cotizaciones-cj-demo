@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ── Branding: Oro cálido #AAA05C → hsl(52, 31%, 51%) ── */
+
+    --background: 45 25% 97%;        /* Crema cálida, no blanco frío */
+    --foreground: 38 25% 12%;        /* Café oscuro cálido */
+
+    --card: 45 30% 99%;              /* Blanco levemente cálido */
+    --card-foreground: 38 25% 12%;
+
+    --popover: 45 30% 99%;
+    --popover-foreground: 38 25% 12%;
+
+    --primary: 52 31% 51%;           /* #AAA05C — Oro principal */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 45 18% 92%;         /* Arena cálida suave */
+    --secondary-foreground: 38 25% 12%;
+
+    --muted: 44 14% 92%;             /* Gris cálido claro */
+    --muted-foreground: 40 12% 46%;  /* Texto secundario cálido */
+
+    --accent: 48 28% 87%;            /* Tint dorado suave */
+    --accent-foreground: 38 25% 12%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --border: 42 15% 87%;            /* Borde cálido sutil */
+    --input: 42 15% 87%;
+    --ring: 52 31% 51%;              /* Foco = color primario */
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 44 22% 95%;
+    --sidebar-foreground: 38 25% 12%;
+    --sidebar-primary: 52 31% 51%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 45 18% 89%;
+    --sidebar-accent-foreground: 38 25% 12%;
+    --sidebar-border: 42 15% 87%;
+    --sidebar-ring: 52 31% 51%;
+  }
+
+  .dark {
+    /* ── Dark mode: terroso cálido, no azul frío ── */
+
+    --background: 35 18% 9%;         /* Oscuro cálido terroso */
+    --foreground: 45 20% 93%;        /* Casi blanco cálido */
+
+    --card: 35 15% 12%;              /* Card ligeramente más claro */
+    --card-foreground: 45 20% 93%;
+
+    --popover: 35 15% 12%;
+    --popover-foreground: 45 20% 93%;
+
+    --primary: 52 34% 57%;           /* Oro más luminoso en oscuro */
+    --primary-foreground: 35 18% 9%;
+
+    --secondary: 35 12% 17%;         /* Secundario oscuro cálido */
+    --secondary-foreground: 45 20% 93%;
+
+    --muted: 35 12% 17%;
+    --muted-foreground: 42 12% 57%;  /* Texto suave cálido */
+
+    --accent: 35 12% 20%;
+    --accent-foreground: 45 20% 93%;
+
+    --destructive: 0 62% 35%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 60% 30%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 85% 44%;
+    --warning-foreground: 0 0% 100%;
+
+    --border: 35 12% 19%;
+    --input: 35 12% 19%;
+    --ring: 52 34% 57%;
+
+    --sidebar-background: 35 18% 9%;
+    --sidebar-foreground: 45 20% 93%;
+    --sidebar-primary: 52 34% 57%;
+    --sidebar-primary-foreground: 35 18% 9%;
+    --sidebar-accent: 35 12% 17%;
+    --sidebar-accent-foreground: 45 20% 93%;
+    --sidebar-border: 35 12% 19%;
+    --sidebar-ring: 52 34% 57%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  /* Input error state */
+  .input-error {
+    @apply border-destructive focus-visible:ring-destructive/50 focus-visible:border-destructive;
+  }
+
+  /* Input success state */
+  .input-success {
+    @apply border-success focus-visible:ring-success/50 focus-visible:border-success;
+  }
+
+  /* Shake animation for errors */
+  .animate-error {
+    animation: shake 0.4s ease-out;
+  }
+}
+
+@layer utilities {
+  /* Focus glow effect */
+  .focus-glow {
+    @apply focus-visible:shadow-[0_0_0_3px_hsl(var(--ring)/0.1)];
+  }
+
+  /* Smooth autofill styling */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px hsl(var(--background)) inset;
+    -webkit-text-fill-color: hsl(var(--foreground));
+    transition: background-color 5000s ease-in-out 0s;
+  }
+}
