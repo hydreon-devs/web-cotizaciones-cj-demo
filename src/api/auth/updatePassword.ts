@@ -1,6 +1,3 @@
-import { supabase } from "../conection";
-
-export const updatePassword = async (password: string) => {
-    const { data, error } = await supabase.auth.updateUser({ password });
-    return { data, error };
+export const updatePassword = async (_password: string) => {
+    return { data: null, error: null };
 };

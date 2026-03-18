@@ -18,7 +18,6 @@ import { saveAs } from "file-saver";
 import { DatosCotizacion } from "@/types/cotizacion";
 import encabezadoImg from "@/assets/encabezadoCJproducciones.png";
 import pieDePaginaImg from "@/assets/pieDePaginaCJproducciones.png";
-import firmaImg from "@/assets/firmaCJproducciones.png";
 
 interface TotalesCalculados {
   subtotal: number;
@@ -385,23 +384,9 @@ export class WordExportService {
     ];
   }
 
-  private static async crearSeccionFirma(datos: DatosCotizacion): Promise<Paragraph[]> {
-    const firmaData = await this.fetchImageAsUint8Array(firmaImg);
-
+  private static crearSeccionFirma(datos: DatosCotizacion): Paragraph[] {
     return [
       new Paragraph({ spacing: { before: 600 } }),
-      new Paragraph({
-        children: [
-          new ImageRun({
-            data: firmaData,
-            transformation: {
-              width: 150,
-              height: 60,
-            },
-            type: "png",
-          }),
-        ],
-      }),
       new Paragraph({
         children: [
           new TextRun({
@@ -432,7 +417,7 @@ export class WordExportService {
   static async generarDocumento(datos: DatosCotizacion): Promise<void> {
     const header = await this.crearHeader();
     const footer = await this.crearFooter();
-    const seccionFirma = await this.crearSeccionFirma(datos);
+    const seccionFirma = this.crearSeccionFirma(datos);
 
     const doc = new Document({
       styles: {

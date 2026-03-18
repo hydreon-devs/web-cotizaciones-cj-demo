@@ -1,4 +1,4 @@
-import { supabase } from "../conection";
+import { DEMO_USERS } from "@/demo/demoData";
 
 export interface UserWithEmail {
     id: string;
@@ -8,6 +8,5 @@ export interface UserWithEmail {
 }
 
 export const getUsers = async () => {
-    const { data, error } = await supabase.rpc("get_users_with_email");
-    return { data: data as UserWithEmail[] | null, error };
+    return { data: DEMO_USERS as UserWithEmail[], error: null };
 };
