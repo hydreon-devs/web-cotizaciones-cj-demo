@@ -1,5 +1,5 @@
 /**
- * Datos iniciales inmutables para el modo demo de CJ Producciones.
+ * Datos iniciales inmutables para el modo demo.
  * Estos datos se usan para poblar el demoStore al inicio.
  */
 
@@ -11,7 +11,7 @@ import type { Servicio, ProductoServicio, PlantillaDB } from "@/types/cotizacion
 
 export const DEMO_USER = {
   id: "demo-user-001",
-  email: "demo@cjproducciones.com",
+  email: "demo@empresa.com",
   password: "Demo2024",
   name: "Usuario Demo",
   role: "admin" as const,
@@ -208,7 +208,7 @@ export const DEMO_PRODUCTOS: ProductoServicio[] = [
     id: 13,
     id_servicio: 4,
     nombre: "Dirección Artística",
-    descripcion: "Dirección artística integral del evento por director senior CJ Producciones",
+    descripcion: "Dirección artística integral del evento por director senior",
     precio: 3500000,
     estado: "activo",
     created_at: "2024-01-15T08:30:00.000Z",
@@ -430,7 +430,7 @@ export const DEMO_COTIZACIONES: DemoCotizacionDB[] = [
         producto_id: 13,
         nombre_servicio: "Producción Artística",
         nombre_producto: "Dirección Artística",
-        descripcion_producto: "Dirección artística integral del evento por director senior CJ Producciones",
+        descripcion_producto: "Dirección artística integral del evento por director senior",
         cantidad: 1,
         precio_unitario: 3500000,
         subtotal: 3500000,
@@ -475,7 +475,7 @@ export const DEMO_COTIZACIONES: DemoCotizacionDB[] = [
       {
         id: 4,
         cotizacion_id: 1,
-        texto: "CJ Producciones no se hace responsable por retrasos causados por condiciones climáticas adversas.",
+        texto: "El proveedor no se hace responsable por retrasos causados por condiciones climáticas adversas.",
         orden: 4,
         created_at: "2024-07-20T10:10:00.000Z",
       },
@@ -1033,19 +1033,19 @@ export interface DemoUserWithEmail {
 export const DEMO_USERS: DemoUserWithEmail[] = [
   {
     id: "demo-user-001",
-    email: "demo@cjproducciones.com",
+    email: "demo@empresa.com",
     user_name: "Usuario Demo",
     role: "admin",
   },
   {
     id: "demo-user-002",
-    email: "editor@cjproducciones.com",
+    email: "editor@empresa.com",
     user_name: "María González",
     role: "editor",
   },
   {
     id: "demo-user-003",
-    email: "tecnico@cjproducciones.com",
+    email: "tecnico@empresa.com",
     user_name: "Juan Martínez",
     role: "empleado",
   },

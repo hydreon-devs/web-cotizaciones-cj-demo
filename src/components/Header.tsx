@@ -1,8 +1,6 @@
 import { useState } from "react";
-import { LogOut, Menu, Settings, User } from "lucide-react";
+import { LogOut, Menu, Settings, User, FileText } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import logoCJ from "@/assets/LogoCJ.png";
-import logoCJNegro from "@/assets/LogoCJNegro.png";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -72,9 +70,9 @@ const Header = () => {
             <Menu className="h-5 w-5" />
           </Button>
 
-          <Link to="/" className="flex items-center hover:opacity-90 transition-opacity shrink-0">
-            <img src={logoCJ} alt="CJ Producciones" className="h-10 dark:hidden" />
-            <img src={logoCJNegro} alt="CJ Producciones" className="h-10 hidden dark:block" />
+          <Link to="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity shrink-0">
+            <FileText className="h-6 w-6 text-primary" />
+            <span className="font-semibold text-foreground hidden sm:inline">Gestor de Cotizaciones</span>
           </Link>
 
           {/* Desktop navigation */}
@@ -140,9 +138,9 @@ const Header = () => {
       <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
         <SheetContent side="left" className="w-72">
           <SheetHeader>
-            <SheetTitle className="flex items-center">
-              <img src={logoCJ} alt="CJ Producciones" className="h-12 dark:hidden" />
-              <img src={logoCJNegro} alt="CJ Producciones" className="h-12 hidden dark:block" />
+            <SheetTitle className="flex items-center gap-2">
+              <FileText className="h-5 w-5 text-primary" />
+              Gestor de Cotizaciones
             </SheetTitle>
           </SheetHeader>
           <nav className="flex flex-col gap-2 mt-6">

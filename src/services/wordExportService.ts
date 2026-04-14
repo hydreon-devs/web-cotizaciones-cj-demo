@@ -8,7 +8,6 @@ import {
   TextRun,
   Header,
   Footer,
-  ImageRun,
   AlignmentType,
   WidthType,
   PageNumber,
@@ -16,8 +15,6 @@ import {
 } from "docx";
 import { saveAs } from "file-saver";
 import { DatosCotizacion } from "@/types/cotizacion";
-import encabezadoImg from "@/assets/encabezadoCJproducciones.png";
-import pieDePaginaImg from "@/assets/pieDePaginaCJproducciones.png";
 
 interface TotalesCalculados {
   subtotal: number;
@@ -28,12 +25,6 @@ interface TotalesCalculados {
 }
 
 export class WordExportService {
-  private static async fetchImageAsUint8Array(url: string): Promise<Uint8Array> {
-    const response = await fetch(url);
-    const blob = await response.arrayBuffer();
-    return new Uint8Array(blob);
-  }
-
   private static formatCurrency(amount: number): string {
     return new Intl.NumberFormat("es-CO", {
       style: "currency",
@@ -97,46 +88,30 @@ export class WordExportService {
     return `${dia} de ${mes} del ${año}`;
   }
   
-  private static async crearHeader(): Promise<Header> {
-    const encabezadoData = await this.fetchImageAsUint8Array(encabezadoImg);
-
+  private static crearHeader(): Header {
     return new Header({
       children: [
         new Paragraph({
-          alignment: AlignmentType.CENTER,
+          alignment: AlignmentType.LEFT,
           children: [
-            new ImageRun({
-              data: encabezadoData,
-              transformation: {
-                width: 600,
-                height: 180,
-              },
-              type: "png",
+            new TextRun({
+              text: "[Logo empresa]",
+              bold: true,
+              size: 28,
+              color: "888888",
             }),
           ],
+          border: {
+            bottom: { style: BorderStyle.SINGLE, size: 6, color: "E0E0E0" },
+          },
         }),
       ],
     });
   }
 
-  private static async crearFooter(): Promise<Footer> {
-    const pieDePaginaData = await this.fetchImageAsUint8Array(pieDePaginaImg);
-
+  private static crearFooter(): Footer {
     return new Footer({
       children: [
-        new Paragraph({
-          alignment: AlignmentType.CENTER,
-          children: [
-            new ImageRun({
-              data: pieDePaginaData,
-              transformation: {
-                width: 600,
-                height: 100,
-              },
-              type: "png",
-            }),
-          ],
-        }),
         new Paragraph({
           alignment: AlignmentType.CENTER,
           children: [
@@ -170,7 +145,7 @@ export class WordExportService {
       new Paragraph({
         children: [
           new TextRun({
-            text: `Medellín, ${this.formatDateLong(fechaHoy)}`,
+            text: this.formatDateLong(fechaHoy),
           }),
         ],
         spacing: { after: 200 },
@@ -189,19 +164,6 @@ export class WordExportService {
           new TextRun({
             text: datos.cliente || "Sin especificar",
             bold: true,
-          }),
-        ],
-        spacing: { after: 300 },
-      }),
-      // Descripción de CJ Producciones
-      new Paragraph({
-        children: [
-          new TextRun({
-            text: "CJ PRODUCCIONES: ",
-            bold: true,
-          }),
-          new TextRun({
-            text: "Es una empresa especializada en la producción de bodas, eventos corporativos, espectáculos artísticos y musicales.",
           }),
         ],
         spacing: { after: 300 },
@@ -390,7 +352,7 @@ export class WordExportService {
       new Paragraph({
         children: [
           new TextRun({
-            text: datos.nombreEncargado || "Carlos Jaramillo",
+            text: datos.nombreEncargado || "Nombre del encargado",
             bold: true,
           }),
         ],
@@ -398,25 +360,21 @@ export class WordExportService {
       new Paragraph({
         children: [
           new TextRun({
-            text: datos.cargo || "Director general",
+            text: datos.cargo || "Cargo",
             color: "666666",
           }),
         ],
       }),
       new Paragraph({
         children: [
-          new TextRun({
-            text: "carlos.jaramillo@cjproducciones.com",
-            color: "666666",
-          }),
         ],
       }),
     ];
   }
 
   static async generarDocumento(datos: DatosCotizacion): Promise<void> {
-    const header = await this.crearHeader();
-    const footer = await this.crearFooter();
+    const header = this.crearHeader();
+    const footer = this.crearFooter();
     const seccionFirma = this.crearSeccionFirma(datos);
 
     const doc = new Document({

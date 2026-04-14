@@ -1,6 +1,5 @@
 import { forwardRef } from "react";
 import { DatosCotizacion } from "@/types/cotizacion";
-import logoCJ from "@/assets/LogoCJ.png";
 
 interface VistaPreviaProps {
   datos: DatosCotizacion;
@@ -56,7 +55,9 @@ const VistaPrevia = forwardRef<HTMLDivElement, VistaPreviaProps>(({ datos, onPre
         {/* Header */}
         <div className="flex justify-between items-start mb-6 pb-4 border-b border-border">
           <div className="flex items-center">
-            <img src={logoCJ} alt="CJ Producciones" className="h-14" />
+            <div className="h-12 px-4 flex items-center border border-dashed border-border rounded text-sm text-muted-foreground select-none">
+              [Logo empresa]
+            </div>
           </div>
           <div className="text-right">
             <h2 className="text-lg font-bold text-foreground">COTIZACIÓN</h2>
@@ -66,9 +67,9 @@ const VistaPrevia = forwardRef<HTMLDivElement, VistaPreviaProps>(({ datos, onPre
 
         {/* Company Info */}
         <div className="mb-6 text-xs text-muted-foreground">
-          <p>Medellín, Colombia</p>
-          <p>info@cjproducciones.com.co</p>
-          <p>+57 315 494 3646</p>
+          <p>Ciudad, País</p>
+          <p>contacto@empresa.com</p>
+          <p>+00 000 000 0000</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
@@ -197,9 +198,8 @@ const VistaPrevia = forwardRef<HTMLDivElement, VistaPreviaProps>(({ datos, onPre
         {/* Signature */}
         <div className="flex items-center gap-3 pt-4 border-t border-border">
           <div className="text-xs">
-            <p className="font-medium text-foreground">{datos.nombreEncargado || "Carlos Jaramillo"}</p>
-            <p className="text-muted-foreground">{datos.cargo || "Director general"}</p>
-            <p className="text-muted-foreground">carlos.jaramillo@cjproducciones.com</p>
+            <p className="font-medium text-foreground">{datos.nombreEncargado || "Nombre del encargado"}</p>
+            <p className="text-muted-foreground">{datos.cargo || "Cargo"}</p>
           </div>
         </div>
       </div>

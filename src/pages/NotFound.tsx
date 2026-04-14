@@ -30,7 +30,7 @@ const NotFound = () => {
           </Button>
         </div>
         <p className="mt-8 text-xs text-muted-foreground tracking-widest uppercase animate-fade-in [animation-delay:600ms]">
-          CJ Producciones
+          Gestor de Cotizaciones
         </p>
       </div>
     </div>

@@ -54,8 +54,8 @@ const NuevaCotizacion = () => {
     descuento: 0,
     iva: 19,
     fecha: "",
-    nombreEncargado: "Carlos Jaramillo",
-    cargo: "Director general",
+    nombreEncargado: "",
+    cargo: "",
     productos: [],
   });
 
@@ -329,8 +329,8 @@ const NuevaCotizacion = () => {
       descuento: 0,
       iva: 19,
       fecha: "",
-      nombreEncargado: "Carlos Jaramillo",
-      cargo: "Director general",
+      nombreEncargado: "",
+      cargo: "",
       productos: [],
     });
     setIvaHabilitado(true);
@@ -477,7 +477,7 @@ const NuevaCotizacion = () => {
                   <label className="text-xs text-muted-foreground">Encargado</label>
                   <Input
                     className="h-9"
-                    placeholder="Carlos Jaramillo"
+                    placeholder="Nombre del encargado"
                     value={datos.nombreEncargado}
                     onChange={(e) => handleInputChange("nombreEncargado", e.target.value)}
                   />

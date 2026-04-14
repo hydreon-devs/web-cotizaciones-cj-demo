@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { UserPlus, ArrowLeft, Mail, ShieldCheck } from "lucide-react";
-import logoCJ from "@/assets/LogoCJ.png";
-import logoCJNegro from "@/assets/LogoCJNegro.png";
+import { FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 
@@ -18,13 +17,14 @@ const AcceptInvite = () => {
       <Card className="w-full max-w-md relative z-10 shadow-2xl border-primary/20 animate-in fade-in slide-in-from-bottom-4 duration-700">
         <CardHeader className="space-y-5 text-center pb-6">
           <div className="mx-auto animate-in zoom-in duration-500 delay-100">
-            <img src={logoCJ} alt="CJ Producciones" className="h-24 dark:hidden" />
-            <img src={logoCJNegro} alt="CJ Producciones" className="h-24 hidden dark:block" />
+            <div className="h-20 w-20 rounded-2xl bg-primary/10 flex items-center justify-center">
+              <FileText className="h-10 w-10 text-primary" />
+            </div>
           </div>
           <div className="space-y-1.5 animate-in fade-in slide-in-from-top-2 duration-500 delay-300">
             <CardTitle className="text-2xl font-bold text-foreground">Activar cuenta</CardTitle>
             <CardDescription className="text-sm font-semibold text-primary uppercase tracking-widest">
-              CJ Producciones
+              Gestor de Cotizaciones
             </CardDescription>
           </div>
         </CardHeader>

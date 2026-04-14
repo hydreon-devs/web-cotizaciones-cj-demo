@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Lock, Eye, EyeOff, Loader2 } from "lucide-react";
-import logoCJ from "@/assets/LogoCJ.png";
-import logoCJNegro from "@/assets/LogoCJNegro.png";
+import { FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -77,13 +76,14 @@ const ResetPassword = () => {
       <Card className="w-full max-w-md relative z-10 shadow-2xl border-primary/20 animate-in fade-in slide-in-from-bottom-4 duration-700">
         <CardHeader className="space-y-5 text-center pb-8">
           <div className="mx-auto animate-in zoom-in duration-500 delay-100">
-            <img src={logoCJ} alt="CJ Producciones" className="h-32 dark:hidden" />
-            <img src={logoCJNegro} alt="CJ Producciones" className="h-32 hidden dark:block" />
+            <div className="h-20 w-20 rounded-2xl bg-primary/10 flex items-center justify-center">
+              <FileText className="h-10 w-10 text-primary" />
+            </div>
           </div>
           <div className="space-y-1.5 animate-in fade-in slide-in-from-top-2 duration-500 delay-300">
             <CardTitle className="text-2xl font-bold text-foreground">Nueva contraseña</CardTitle>
             <CardDescription className="text-sm font-semibold text-primary uppercase tracking-widest">
-              CJ Producciones
+              Gestor de Cotizaciones
             </CardDescription>
           </div>
         </CardHeader>

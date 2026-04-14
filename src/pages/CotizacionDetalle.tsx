@@ -92,8 +92,8 @@ const CotizacionDetallePage = () => {
       consideraciones,
       descuento: toNumber(cot.descuento ?? 0),
       fecha: cot.fecha ?? "",
-      nombreEncargado: "Carlos Jaramillo",
-      cargo: "Director general",
+      nombreEncargado: "",
+      cargo: "",
       productos,
     };
 
